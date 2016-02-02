@@ -6,6 +6,7 @@ import {
 
 import {HomeCmp} from '../../home/components/home';
 import {AboutCmp} from '../../about/components/about';
+import {MathSheetCmp} from '../../mathsheet/components/mathsheet';
 import {NameList} from '../../shared/services/name_list';
 
 @Component({
@@ -18,6 +19,7 @@ import {NameList} from '../../shared/services/name_list';
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },
-  { path: '/about', component: AboutCmp, as: 'About' }
+  { path: '/about', component: AboutCmp, as: 'About' },
+  { path: '/mathsheet', component: MathSheetCmp, as: 'MathSheet'}
 ])
 export class AppCmp {}
