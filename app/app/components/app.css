@@ -37,7 +37,7 @@
   margin-left: -10px;
   margin-right: -10px;
 }
-.row-fluid .group {
+.row-fluid .question {
   position: relative;
   min-height: 1px;
   padding-left: 3px;
@@ -45,39 +45,64 @@
   float: left;
   width: 10%;
   margin-bottom: 3px;
+  text-align: right;
 }
 @media (max-width: 400px) {
-  .row-fluid .group {
+  .row-fluid .question {
     position: relative;
     min-height: 1px;
     padding-left: 10px;
     padding-right: 10px;
+    text-align: right;
     float: left;
     width: 10%;
+
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .row-fluid .group {
+  .row-fluid .question {
     position: relative;
     min-height: 1px;
     padding-left: 10px;
     padding-right: 10px;
     float: left;
+    text-align: right;
     width: 10%;
   }
 }
 @media (min-width: 992px) {
-  .row-fluid .group {
+  .row-fluid .question {
     position: relative;
     min-height: 1px;
     padding-left: 10px;
     padding-right: 10px;
     float: left;
     width: 10%;
+    text-align: right;
   }
+}
+.divider {
+  display: none;
 }
 @media print {
     input, textarea {
         display: none;
     }
+    .divider{
+      display: block !important;
+    }
+}
+
+.answer{
+  width:60px;
+  text-align:right;
+  margin-right: -10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+.catpicture{
+   width: 100px;
+   height: 200px;
+   display: block;
+   background: url("https://placebear.com/200/300") no-repeat center;
 }

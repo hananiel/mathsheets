@@ -3,12 +3,14 @@ Math sheet
 </p>
 
 <ul class="row-fluid">
-  <li *ngFor="#tuple of list" class="group" style="text-align:right;">
+  <li *ngFor="#problem of list"  >
+    <div class="question" [hidden]="problem.hidden">
+    {{problem.operand1}} <br> - {{problem.operand2}}
+    <br> <span class="divider">------</span>
+    <input type="text" class="answer">
+    <br>
+  </div>
+  <div class="catpicture question" [hidden]="!problem.hidden" (click)='showProblem(problem)'> hi there</div>
 
-    {{tuple[0]}} <br> - {{tuple[1]}}
-    <br> ------
-    <input type="text" style="width:60px;text-align:right;">
-    <br>
-    <br>
   </li>
 </ul>

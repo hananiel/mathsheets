@@ -10,18 +10,18 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 })
 export class MathSheetCmp {
   newName: string;
-  list: [[number,number]];
+  list: {}[];
 
   constructor() {
-     this.list =[[0,0]];
-     this.list.pop();
+     this.list =[];
+
      for (var i = 0; i < 100; i++) {
-        var x = Math.floor(Math.random() * 19) + 1 ;
-        var y = 9;// Math.floor(Math.random() * 9) + 1 ;
-        while ( x < y ) {
-         x = Math.floor(Math.random() * 19) + 1 ;
+        var operand1 = Math.floor(Math.random() * 19) + 1 ;
+        var operand2 =  Math.floor(Math.random() * 9) + 1 ;
+        while ( operand1 < operand1 ) {
+         operand1 = Math.floor(Math.random() * 19) + 1 ;
         }
-       this.list.push( [x, y]);
+       this.list.push( { operand1: operand1, operand2: operand2, hidden: true, answer : 0, timeToComplete: 0});
       }
   }
  /*
@@ -32,5 +32,11 @@ export class MathSheetCmp {
     //this.list.add(this.newName);
     this.newName = '';
     return false;
+  }
+  showProblem(problem): boolean {
+    //alert('problem'+ problem);
+    problem.hidden = false;
+    return false;
+
   }
 }
