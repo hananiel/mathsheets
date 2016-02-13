@@ -4,7 +4,7 @@ Math sheet
 
 <ul class="row-fluid">
   <li *ngFor="#problem of list"  >
-    <div class="question" [style.visibility]="problem.hidden ? 'hidden' : 'visible'">
+    <div class="question" [ngClass]="problem.hidden ? 'qHidden' : 'qVisible'">
     {{problem.operand1}} <br> - {{problem.operand2}}
     <br> <span class="divider">------</span>
     <input type="text" class="answer">

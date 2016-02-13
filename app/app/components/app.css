@@ -84,12 +84,25 @@
 .divider {
   display: none;
 }
+.qHidden{
+  visibility: hidden;
+}
+.qVisible{
+  visibility: visible;
+}
+
 @media print {
     input, textarea {
         display: none;
     }
     .divider{
       display: block !important;
+    }
+    .qHidden{
+      visibility: visible;
+    }
+    .problemTease{
+      visibility: hidden;
     }
 }
 
