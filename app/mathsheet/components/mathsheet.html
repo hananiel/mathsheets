@@ -4,13 +4,13 @@ Math sheet
 
 <ul class="row-fluid">
   <li *ngFor="#problem of list"  >
-    <div class="question" [hidden]="problem.hidden">
+    <div class="question" [style.visibility]="problem.hidden ? 'hidden' : 'visible'">
     {{problem.operand1}} <br> - {{problem.operand2}}
     <br> <span class="divider">------</span>
     <input type="text" class="answer">
     <br>
   </div>
-  <div class="catpicture question" [hidden]="!problem.hidden" (click)='showProblem(problem)'> hi there</div>
+  <div class="problemTease question" [style.visibility]="problem.hidden ? 'visible' : 'hidden'" (click)='showProblem(problem)' style="margin-left: -74px ; width:74px;"></div>
 
   </li>
 </ul>

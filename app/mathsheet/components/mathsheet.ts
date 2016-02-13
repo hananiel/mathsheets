@@ -35,8 +35,9 @@ export class MathSheetCmp {
   }
   showProblem(problem): boolean {
     //alert('problem'+ problem);
+    console.log(problem);
     problem.hidden = false;
-    return false;
+    return true;
 
   }
 }

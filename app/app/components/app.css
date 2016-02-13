@@ -100,9 +100,10 @@
   padding-right: 10px;
   margin-bottom: 5px;
 }
-.catpicture{
-   width: 100px;
-   height: 200px;
+.problemTease{
+   width: 75px;
+   height: 75px;
    display: block;
-   background: url("https://placebear.com/200/300") no-repeat center;
+   background: url("/dist/dev/assets/img/cupcakes.jpg") no-repeat center;
+   background-position: 0px 0px;
 }
