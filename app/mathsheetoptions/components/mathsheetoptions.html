@@ -1,0 +1,22 @@
+<p>
+Math sheet Options
+</p>
+<div>
+
+  <fieldset class="form-group">
+    <label for="maxMinuend">Maximum Minuend</label>
+    <select class="form-control" id="maxMinuend" [(ngModel)]="minuend" (change)="changeMinuend($event.target.value)">
+     <option *ngFor="#i of minuendRange" [value]="i">{{i}}</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="maxSubtrahend">Maximum Minuend</label>
+    <select class="form-control" id="maxSubtrahend" [(ngModel)]="subtrahend">
+     <option *ngFor="#i of subtrahendRange" [value]="i">{{i}}</option>
+    </select>
+  </fieldset>
+
+
+  <span>Generate Math sheet with minuends upto: {{minuend}} and subtrahends upto: {{subtrahend}}</span><br><br>
+  <input type="button" [routerLink]="['/MathSheet',{minuend:minuend, subtrahend: subtrahend}]" value="Generate Math sheet"/>
+</div>
