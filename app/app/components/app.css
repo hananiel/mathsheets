@@ -104,6 +104,9 @@
     .problemTease{
       visibility: hidden;
     }
+    .printButton{
+      visibility: hidden;
+    }
 }
 
 .answer{
@@ -118,5 +121,29 @@
    height: 75px;
    display: block;
    background: url("/dist/dev/assets/img/cupcakes.jpg") no-repeat center;
-   background-position: 0px 0px;
+   background-position: 0px 4px;
+}
+.pt1{
+     background-position: 0px 4px;
+}
+.pt2{
+     background-position: -80px 4px;
+}
+.pt3{
+    background-position: -160px 4px;
+}
+.pt4{
+    background-position: -230px 4px;
+}
+.pt5{
+    background-position: -230px -74px;
+}
+.pt6{
+     background-position: 0px -69px;
+}
+.pt7{
+     background-position: -80px -74px;
+}
+.pt8{
+    background-position: -160px -74px;
 }

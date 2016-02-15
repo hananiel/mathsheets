@@ -11,7 +11,7 @@ import {MathSheetCmp} from './mathsheet';
 import {NameList} from '../../shared/services/name_list';
 
 export function main() {
-  describe('About component', () => {
+  describe('Mathsheet component', () => {
     it('should work',
       injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)

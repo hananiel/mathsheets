@@ -1,16 +1,16 @@
-<p>
-Math sheet
-</p>
-
+<H3>
+Math Sheet max minuend: {{maxMinuend}}, max subtrahend: {{maxSubtrahend}}
+</H3>
+<input type="button" class="printButton" value="Print"onclick="window.print();return false;" />
 <ul class="row-fluid">
-  <li *ngFor="#problem of list"  >
-    <div class="question" [ngClass]="problem.hidden ? 'qHidden' : 'qVisible'">
-    {{problem.operand1}} <br> - {{problem.operand2}}
-    <br> <span class="divider">------</span>
-    <input type="text" class="answer">
-    <br>
-  </div>
-  <div class="problemTease question" [style.visibility]="problem.hidden ? 'visible' : 'hidden'" (click)='showProblem(problem)' style="margin-left: -74px ; width:74px;"></div>
+  <li *ngFor="#problem of list; #i = index"  >
+      <div class="question" [ngClass]="problem.hidden ? 'qHidden' : 'qVisible'">
+      {{problem.minuend}} <br> - {{problem.subtrahend}}
+      <br> <span class="divider">------</span>
+      <input type="text" class="answer" focus  id="ans{{i}}" #answer>
+      <br>
+      </div>
+      <div class="problemTease pt{{problem.image}} question" [style.visibility]="problem.hidden ? 'visible' : 'hidden'" (click)='showProblem(problem,answer)' style="margin-left: -74px ; width:74px;"></div>
 
   </li>
 </ul>
