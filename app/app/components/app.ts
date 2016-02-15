@@ -4,7 +4,7 @@ import {
   ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-import {HomeCmp} from '../../home/components/home';
+//import {HomeCmp} from '../../home/components/home';
 import {AboutCmp} from '../../about/components/about';
 import {MathSheetCmp} from '../../mathsheet/components/mathsheet';
 import {MathSheetOptionsCmp} from '../../mathsheetoptions/components/mathsheetoptions';
@@ -19,9 +19,9 @@ import {NameList} from '../../shared/services/name_list';
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  { path: '/', component: HomeCmp, as: 'Home' },
+  { path: '/', component: MathSheetOptionsCmp, as: 'MathSheetOptions' },
   { path: '/about', component: AboutCmp, as: 'About' },
-  { path: '/mathsheetoptions', component: MathSheetOptionsCmp, as: 'MathSheetOptions'},
+//  { path: '/mathsheetoptions', component: MathSheetOptionsCmp, as: 'MathSheetOptions'},
   { path: '/mathsheet', component: MathSheetCmp, as: 'MathSheet'}
 
 ])
