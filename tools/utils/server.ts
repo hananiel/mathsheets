@@ -4,16 +4,16 @@ import * as openResource from 'open';
 import * as serveStatic from 'serve-static';
 import * as codeChangeTool from './code_change_tools';
 import {resolve} from 'path';
-import {APP_BASE, APP_DEST, DOCS_DEST, DOCS_PORT, PORT} from '../config';
+import {APP_BASE, APP_DEST, DOCS_DEST, DOCS_PORT} from '../config';
 
 export function serveSPA() {
   let server = express();
   codeChangeTool.listen();
   server.use.apply(server, codeChangeTool.middleware);
-
-  server.listen(PORT, () => {
-    util.log('Server is listening on port: ' + PORT);
-    openResource('http://localhost:' + PORT + APP_BASE + APP_DEST);
+  var port = process.env.PORT || 3000;
+  server.listen(port, () => {
+    util.log('Server is listening on port: ' + port);
+    openResource('http://localhost:' + port + APP_BASE + APP_DEST);
   });
 }
 
