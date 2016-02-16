@@ -23,7 +23,7 @@
     "serve.dev": "gulp serve --env dev",
     "tasks.list": "gulp --tasks-simple",
     "test": "gulp test",
-    "tsd": "tsd",
+    "tsd": "./node_modules/.bin/tsd",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start"
   },
