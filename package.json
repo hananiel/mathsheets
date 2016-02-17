@@ -17,13 +17,12 @@
     "gulp": "gulp",
     "karma": "karma",
     "karma.start": "karma start",
-    "postinstall": "echo 'hello' && ./node_modules/.bin/tsd reinstall --clean && ./node_modules/.bin/tsd link && ./node_modules/.bin/tsd rebundle && gulp check.versions && gulp postinstall",
+    "postinstall": "typings install && gulp check.versions && gulp postinstall",
     "reinstall": "rimraf node_modules && npm cache clean && npm install",
     "start": "gulp serve --env dev",
     "serve.dev": "gulp serve --env dev",
     "tasks.list": "gulp --tasks-simple",
     "test": "gulp test",
-    "tsd": "./node_modules/.bin/tsd",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start"
   },
@@ -76,10 +75,10 @@
     "stream-series": "^0.1.1",
     "tiny-lr": "^0.2.1",
     "traceur": "^0.0.91",
-    "ts-node": "^0.5.4",
-    "tsd": "^0.6.4",
+    "ts-node": "^0.5.5",
     "typedoc": "^0.3.12",
     "typescript": "~1.7.3",
+    "typescript-node": "^0.1.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^3.25.0"
@@ -93,7 +92,7 @@
     "rxjs": "5.0.0-beta.0",
     "systemjs": "0.19.9",
     "ts-node": "^0.5.5",
-    "tsd": "^0.6.4",
+    "typings": "^0.6.8",
     "zone.js": "0.5.10"
   }
 }

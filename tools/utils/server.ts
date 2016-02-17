@@ -1,11 +1,11 @@
 import * as util from 'gulp-util';
 import * as express from 'express';
-import * as openResource from 'open';
+//import * as openResource from 'open';
 import * as serveStatic from 'serve-static';
 import * as codeChangeTool from './code_change_tools';
 import {resolve} from 'path';
 import {APP_BASE, APP_DEST, DOCS_DEST, DOCS_PORT} from '../config';
-
+var openResource = require('open');
 export function serveSPA() {
   let server = express();
   codeChangeTool.listen();
