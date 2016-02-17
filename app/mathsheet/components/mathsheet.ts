@@ -1,25 +1,38 @@
-import {Component} from 'angular2/core';
+import {Component, ViewChildren} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteParams,  ROUTER_DIRECTIVES} from 'angular2/router';
 // {ElementRef} from 'angular2/core';
+interface Problem {
+  index: number;
+  minuend: number;
+  subtrahend: number;
+  hidden: boolean;
+  answer : number;
+  timeToComplete: number;
+  image : number;
+}
 
 @Component({
   selector: 'about',
   templateUrl: './mathsheet/components/mathsheet.html',
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
+
+
 export class MathSheetCmp {
-//  @ViewChildren('answer') answerElementRef;
+  @ViewChildren('answer') answerInputs;
+
   newName: string;
-  list: {}[];
+  list: Problem[];
   maxMinuend: string;
   maxSubtrahend: string;
+
   constructor(public params: RouteParams) {
      this.maxMinuend = params.get('minuend') || '18' ;
      this.maxSubtrahend = params.get('subtrahend') || '9';
-    var list =[];
+     var list = [];
 
-    var index = 0;
+     var index = 0;
      while (list.length < 100) {
         var minuend = Math.floor(Math.random() * +this.maxMinuend) + 1 ;
         var currentMaxSubtrahend =  Math.min(+this.maxSubtrahend, minuend);
@@ -57,20 +70,19 @@ export class MathSheetCmp {
     this.newName = '';
     return false;
   }
-  showProblem(problem, answer): boolean {
+  checkProblem(i, answer): boolean {
+    var nextIndex = +i+1;
 
+    if(nextIndex < this.list.length ) {
+      this.list[nextIndex].hidden = false;
+      var elementRef = this.answerInputs.toArray()[nextIndex];
+      setTimeout(function() { elementRef.nativeElement.focus(); }, 0);
+    }
+    return true;
+  }
+  showProblem(problem, answer): boolean {
     problem.hidden = false;
-  //  var element = this.answerElementRef.filter(function (f){ return f.nativeElement.id === 'ans'+problem.index; })[0].nativeElement;
-  //  element.focus();
-  //  answer.value = 10;
-  //  answer.focus();
-//console.log(problem.index);
-//var el = document.getElementById('ans'+problem.index);
- //setTimeout(function() { document.getElementById('ans'+problem.index).focus(); }, 100);
- //setTimeout(function() { el.focus(); }, 100);
- setTimeout(function() { answer.focus(); }, 100);
-//console.log(el);
-//el.focus();
+    setTimeout(function() { answer.focus(); }, 0);
     return false;
 
   }

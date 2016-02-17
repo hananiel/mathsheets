@@ -7,7 +7,7 @@ Math Sheet max minuend: {{maxMinuend}}, max subtrahend: {{maxSubtrahend}}
       <div class="question" [ngClass]="problem.hidden ? 'qHidden' : 'qVisible'">
       {{problem.minuend}} <br> - {{problem.subtrahend}}
       <br> <span class="divider">------</span>
-      <input type="text" class="answer" focus  id="ans{{i}}" #answer>
+      <input type="text" class="answer" focus  id="ans{{i}}" #answer (keyup.enter)="checkProblem(i, answer.value)">
       <br>
       </div>
       <div class="problemTease pt{{problem.image}} question" [style.visibility]="problem.hidden ? 'visible' : 'hidden'" (click)='showProblem(problem,answer)' style="margin-left: -74px ; width:74px;"></div>
