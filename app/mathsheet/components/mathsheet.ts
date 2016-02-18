@@ -9,6 +9,7 @@ interface Problem {
   hidden: boolean;
   answer : number;
   timeToComplete: number;
+  incorrect: boolean;
   image : number;
 }
 
@@ -44,6 +45,7 @@ export class MathSheetCmp {
           hidden: true,
           answer : 0,
           timeToComplete: 0,
+          incorrect: false,
           image : Math.floor( Math.random()*8) + 1
           };
         var isDuplicate = false;
@@ -74,9 +76,16 @@ export class MathSheetCmp {
     var nextIndex = +i+1;
 
     if(nextIndex < this.list.length ) {
-      this.list[nextIndex].hidden = false;
-      var elementRef = this.answerInputs.toArray()[nextIndex];
-      setTimeout(function() { elementRef.nativeElement.focus(); }, 0);
+      var problem = this.list[i];
+      if((problem.minuend - problem.subtrahend) === +answer) {
+        this.list[nextIndex].hidden = false;
+        problem.incorrect = false;
+        var elementRef = this.answerInputs.toArray()[nextIndex];
+        setTimeout(function() { elementRef.nativeElement.focus(); }, 0);
+      } else {
+        problem.incorrect =true;
+      }
+
     }
     return true;
   }

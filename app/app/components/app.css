@@ -116,6 +116,9 @@
   padding-right: 10px;
   margin-bottom: 5px;
 }
+.incorrect{
+  border: 3px solid red;
+}
 .problemTease{
    width: 75px;
    height: 75px;
