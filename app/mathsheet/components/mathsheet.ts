@@ -4,8 +4,8 @@ import {RouteParams,  ROUTER_DIRECTIVES} from 'angular2/router';
 // {ElementRef} from 'angular2/core';
 interface Problem {
   index: number;
-  minuend: number;
-  subtrahend: number;
+  operand1: number;
+  operand2: number;
   hidden: boolean;
   answer : number;
   timeToComplete: number;
@@ -25,23 +25,23 @@ export class MathSheetCmp {
 
   newName: string;
   list: Problem[];
-  maxMinuend: string;
-  maxSubtrahend: string;
+  maxOperand1: number;
+  maxOperand2: number;
 
   constructor(public params: RouteParams) {
-     this.maxMinuend = params.get('minuend') || '18' ;
-     this.maxSubtrahend = params.get('subtrahend') || '9';
+     this.maxOperand1 = +params.get('operand1') || 18 ;
+     this.maxOperand2 = +params.get('operand2') || 9;
      var list = [];
 
      var index = 0;
      while (list.length < 100) {
-        var minuend = Math.floor(Math.random() * +this.maxMinuend) + 1 ;
-        var currentMaxSubtrahend =  Math.min(+this.maxSubtrahend, minuend);
-        var subtrahend =  Math.floor(Math.random() * currentMaxSubtrahend) + 1 ;
+        var operand1 = Math.floor(Math.random() * +this.maxOperand1) + 1 ;
+        var currentOperand2 =  Math.min(+this.maxOperand1, operand1);
+        var operand2 =  Math.floor(Math.random() * currentOperand2) + 1 ;
         var problem = {
           index: index,
-          minuend: minuend,
-          subtrahend: subtrahend,
+          operand1: operand1,
+          operand2: operand2,
           hidden: true,
           answer : 0,
           timeToComplete: 0,
@@ -51,9 +51,9 @@ export class MathSheetCmp {
         var isDuplicate = false;
        for(var i =1 ; list.length > 1 && i <= Math.min(3, list.length); i ++ ) {
           var length = list.length;
-          if(list[length-i].minuend ===  minuend && list[length-i].subtrahend === subtrahend) {
+          if(list[length-i].operand1 ===  operand1 && list[length-i].operand2 === operand2) {
            isDuplicate = true;
-            break;
+           break;
           }
         }
         if(!isDuplicate) {
@@ -77,7 +77,7 @@ export class MathSheetCmp {
 
     if(nextIndex < this.list.length ) {
       var problem = this.list[i];
-      if((problem.minuend - problem.subtrahend) === +answer) {
+      if((problem.operand1 - problem.operand2) === +answer) {
         this.list[nextIndex].hidden = false;
         problem.incorrect = false;
         var elementRef = this.answerInputs.toArray()[nextIndex];

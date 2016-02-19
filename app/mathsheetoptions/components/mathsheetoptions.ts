@@ -10,22 +10,22 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class MathSheetOptionsCmp {
-  minuend: number;
-  subtrahend: number;
-  minuendRange: Array<number>;
-  subtrahendRange: Array<number>;
+  operand1: number;
+  operand2: number;
+  operand1Range: Array<number>;
+  operand2Range: Array<number>;
   test: String;
 
   constructor() {
-     this.minuend = 18;
-     this.subtrahend = 9;
-     this.minuendRange = this.range(0,19);
-     this.subtrahendRange = this.range(0,10);
+     this.operand1 = 18;
+     this.operand2 = 9;
+     this.operand1Range = this.range(0,19);
+     this.operand2Range = this.range(0,10);
   }
-  changeMinuend(newValue):void {
-    if(newValue !== this.minuend)  {
-      this.subtrahendRange = this.range(0,+newValue+1);
-      console.log(this.subtrahendRange.length);
+  changeOperand1(newValue):void {
+    if(newValue !== this.operand1)  {
+      this.operand2Range = this.range(0,+newValue+1);
+      console.log(this.operand2Range.length);
     }
   }
 
