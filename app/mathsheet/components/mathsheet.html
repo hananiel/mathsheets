@@ -1,11 +1,11 @@
 <H3>
-Math Sheet max operand1: {{maxOperand1}}, max operand2: {{maxOperand2}}
+Math Sheet max {{operand1Name}}: {{maxOperand1}}, max {{operand2Name}}: {{maxOperand2}}
 </H3>
 <input type="button" class="printButton" value="Print"onclick="window.print();return false;" />
 <ul class="row-fluid">
   <li *ngFor="#problem of list; #i = index"  >
       <div class="question" [ngClass]="problem.hidden ? 'qHidden' : 'qVisible'">
-      {{problem.operand1}} <br> - {{problem.operand2}}
+      {{problem.operand1}} <br> {{operationSign}} {{problem.operand2}}
       <br> <span class="divider">------</span>
       <input type="text" class="answer" [ngClass]="{incorrect: problem.incorrect}" focus  id="ans{{i}}" #answer (keyup.enter)="checkProblem(i, answer.value)">
       <br>

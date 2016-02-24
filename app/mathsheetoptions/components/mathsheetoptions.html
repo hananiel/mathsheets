@@ -4,19 +4,25 @@ Math sheet Options
 <div>
 
   <fieldset class="form-group">
-    <label for="maxOperand1">Maximum operand1</label>
+    <label for="ProblemType">Problem Type</label>
+    <select class="form-control" id="problemType" [(ngModel)]="problemType" (change)="changeProblemType($event.target.value)">
+     <option *ngFor="#i of problemTypes" [value]="i">{{i}}</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="maxOperand1">Maximum {{operand1Name}}</label>
     <select class="form-control" id="maxOperand1" [(ngModel)]="operand1" (change)="changeOperand1($event.target.value)">
      <option *ngFor="#i of operand1Range" [value]="i">{{i}}</option>
     </select>
   </fieldset>
   <fieldset class="form-group">
-    <label for="maxOperand2">Maximum operand2</label>
-    <select class="form-control" id="maxOperant2" [(ngModel)]="operand2">
+    <label for="maxOperand2">Maximum {{operand2Name}}</label>
+    <select class="form-control" id="maxOperand2" [(ngModel)]="operand2">
      <option *ngFor="#i of operand2Range" [value]="i">{{i}}</option>
     </select>
   </fieldset>
 
 
-  <span>Generate Math sheet with operand1 upto: {{operand1}} and operand2 upto: {{operand2}}</span><br><br>
-  <input type="button" [routerLink]="['/MathSheet',{operand1:operand1, operand2: operand2}]" value="Generate Math sheet"/>
+  <span>Generate Math sheet with {{operand1Name}} upto: {{operand1}} and {{operand2Name}} upto: {{operand2}}</span><br><br>
+  <input type="button" [routerLink]="['/MathSheet',{operand1:operand1, operand2: operand2, problemType: problemType}]" value="Generate Math sheet"/>
 </div>

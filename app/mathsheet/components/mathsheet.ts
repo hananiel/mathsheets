@@ -1,6 +1,10 @@
 import {Component, ViewChildren} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {RouteParams,  ROUTER_DIRECTIVES} from 'angular2/router';
+import {shared} from '../../shared/modules/shared';
+//import Enum = shared.Enum;
+import ProblemType = shared.ProblemType;
+
 // {ElementRef} from 'angular2/core';
 interface Problem {
   index: number;
@@ -27,16 +31,26 @@ export class MathSheetCmp {
   list: Problem[];
   maxOperand1: number;
   maxOperand2: number;
+  problemType: ProblemType;
+  operand1Name: string;
+  operand2Name: string;
+  operationSign: string;
 
   constructor(public params: RouteParams) {
      this.maxOperand1 = +params.get('operand1') || 18 ;
      this.maxOperand2 = +params.get('operand2') || 9;
+     this.problemType = ProblemType[params.get('problemType')] ;
+     this.operand1Name = shared.OperandNames.Ops[this.problemType].op1;
+     this.operand2Name = shared.OperandNames.Ops[this.problemType].op2;
+     this.operationSign = shared.OperandNames.Ops[this.problemType].sign;
+
+
      var list = [];
 
      var index = 0;
      while (list.length < 100) {
         var operand1 = Math.floor(Math.random() * +this.maxOperand1) + 1 ;
-        var currentOperand2 =  Math.min(+this.maxOperand1, operand1);
+        var currentOperand2 =  Math.min(+this.maxOperand2, operand1);
         var operand2 =  Math.floor(Math.random() * currentOperand2) + 1 ;
         var problem = {
           index: index,
@@ -77,7 +91,7 @@ export class MathSheetCmp {
 
     if(nextIndex < this.list.length ) {
       var problem = this.list[i];
-      if((problem.operand1 - problem.operand2) === +answer) {
+      if(this.performOperation(problem) === +answer) {
         this.list[nextIndex].hidden = false;
         problem.incorrect = false;
         var elementRef = this.answerInputs.toArray()[nextIndex];
@@ -88,6 +102,24 @@ export class MathSheetCmp {
 
     }
     return true;
+  }
+  performOperation(problem: Problem): number {
+    var returnValue : number;
+    switch(this.problemType) {
+      case ProblemType.Addition:
+        returnValue = problem.operand1 + problem.operand2;
+        break;
+      case ProblemType.Subtraction:
+        returnValue = problem.operand1 - problem.operand2;
+        break;
+      case ProblemType.Multiplication:
+        returnValue = problem.operand1 * problem.operand2;
+        break;
+      case ProblemType.Division:
+        returnValue = Math.floor(problem.operand1 / problem.operand2);
+        break;
+      }
+      return returnValue;
   }
   showProblem(problem, answer): boolean {
     problem.hidden = false;
